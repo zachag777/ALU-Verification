@@ -1,0 +1,19 @@
+# Questa/ModelSim generated files
+*.wlf
+*.vstf
+*.ucdb
+*.log
+*.transcript
+
+# Questa working libraries
+work/
+questa/
+modelsim.ini
+
+# Compiled simulation files
+*.o
+*.dll
+
+# OS/editor files
+.DS_Store
+Thumbs.db
