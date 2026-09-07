@@ -17,3 +17,6 @@ modelsim.ini
 # OS/editor files
 .DS_Store
 Thumbs.db
+
+ALU.cr.mti
+ALU.mpf
