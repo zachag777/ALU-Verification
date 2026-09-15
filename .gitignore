@@ -4,6 +4,7 @@
 *.ucdb
 *.log
 *.transcript
+*.bak
 
 # Questa working libraries
 work/
