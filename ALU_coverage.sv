@@ -1,4 +1,5 @@
 import uvm_pkg::*;
+`include "uvm_macros.svh"
 
 class ALU_coverage #(
 	parameter width = 8
