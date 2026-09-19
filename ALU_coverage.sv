@@ -28,7 +28,7 @@ class ALU_coverage #(
 			bins max = {{width{1'b1}}};
 			bins negative = {
 			{1'b1,{(width-1){1'b0}}} :
-			{1'b1,{(width-2){1'b1}},1'b0}
+			{1'b1,{(width-1){1'b1}}}
 			};
 			bins other = {
 			{{(width-1){1'b0}}, 1'b1} : 
@@ -42,7 +42,7 @@ class ALU_coverage #(
 			bins max = {{width{1'b1}}};
 			bins negative = {
 			{1'b1,{(width-1){1'b0}}} :
-			{1'b1,{(width-2){1'b1}},1'b0}
+			{1'b1,{(width-1){1'b1}}}
 			};
 			bins other = {
 			{{(width-1){1'b0}}, 1'b1} : 
@@ -56,7 +56,7 @@ class ALU_coverage #(
 			bins max = {{width{1'b1}}};
 			bins negative = {
 			{1'b1,{(width-1){1'b0}}} :
-			{1'b1,{(width-2){1'b1}},1'b0}
+			{1'b1,{(width-1){1'b1}}}
 			};
 			bins other = {
 			{{(width-1){1'b0}}, 1'b1} : 
@@ -70,9 +70,19 @@ class ALU_coverage #(
 			bins zero = {1'b1};
 			bins not_zero = {1'b0};
 		}
+		coverpoint trans.carry_flag {
+			bins carry = {1'b1};
+			bins no_carry = {1'b0};
+		}
+		coverpoint trans.overflow_flag {
+			bins overflow = {1'b1};
+			bins no_overflow = {1'b0};
+		}
+		coverpoint trans.negative_flag {
+			bins negative = {1'b1};
+			bins positive = {1'b0};
+		}
 	
-
-
 	endgroup
 
 	function new(string name = "coverage", uvm_component parent = null);
@@ -80,7 +90,7 @@ class ALU_coverage #(
 		ALU_cg = new();
 	endfunction
 
-	function void write(ALU_transaction t);
+	function void write(ALU_transaction #(width) t);
 		trans = t;
 		ALU_cg.sample();
 	endfunction
