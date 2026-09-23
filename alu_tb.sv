@@ -1,6 +1,7 @@
 // set time scale
 
-`timescale 1ns/1ps
+timeunit 1ns;
+timeprecision 1ps;
 import uvm_pkg::*;
 import ALU_pkg::*;
 `include "uvm_macros.svh"
