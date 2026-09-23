@@ -11,7 +11,7 @@ class ALU_coverage #(
 
 	covergroup ALU_cg;
 	// alu operation coverpoint: have we tested x function?
-		coverpoint trans.alu_operation {
+		coverpoint trans.alu_function_select {
 			bins add = {3'b000};
 			bins sub ={3'b001};
 			bins and_function ={3'b010};
@@ -27,12 +27,12 @@ class ALU_coverage #(
 			bins min = {{width{1'b0}}};
 			bins max = {{width{1'b1}}};
 			bins negative = {
-			{1'b1,{(width-1){1'b0}}} :
-			{1'b1,{(width-1){1'b1}}}
+			[{1'b1,{(width-1){1'b0}}} :
+			{1'b1,{(width-1){1'b1}}}]
 			};
 			bins other = {
-			{{(width-1){1'b0}}, 1'b1} : 
-			{1'b0, {(width-1){1'b1}}}
+			[{{(width-1){1'b0}}, 1'b1} : 
+			{1'b0, {(width-1){1'b1}}}]
 			};
 
 		}
@@ -41,12 +41,12 @@ class ALU_coverage #(
 			bins min = {{width{1'b0}}};
 			bins max = {{width{1'b1}}};
 			bins negative = {
-			{1'b1,{(width-1){1'b0}}} :
-			{1'b1,{(width-1){1'b1}}}
+			[{1'b1,{(width-1){1'b0}}} :
+			{1'b1,{(width-1){1'b1}}}]
 			};
 			bins other = {
-			{{(width-1){1'b0}}, 1'b1} : 
-			{1'b0, {(width-1){1'b1}}}
+			[{{(width-1){1'b0}}, 1'b1} : 
+			{1'b0, {(width-1){1'b1}}}]
 			};
 
 		}
@@ -55,12 +55,12 @@ class ALU_coverage #(
 			bins min = {{width{1'b0}}};
 			bins max = {{width{1'b1}}};
 			bins negative = {
-			{1'b1,{(width-1){1'b0}}} :
-			{1'b1,{(width-1){1'b1}}}
+			[{1'b1,{(width-1){1'b0}}} :
+			{1'b1,{(width-1){1'b1}}}]
 			};
 			bins other = {
-			{{(width-1){1'b0}}, 1'b1} : 
-			{1'b0, {(width-1){1'b1}}}
+			[{{(width-1){1'b0}}, 1'b1} : 
+			{1'b0, {(width-1){1'b1}}}]
 			};
 
 		}
@@ -93,6 +93,11 @@ class ALU_coverage #(
 	function void write(ALU_transaction #(width) t);
 		trans = t;
 		ALU_cg.sample();
+	endfunction
+
+	function void report_phase(uvm_phase phase);
+		super.report_phase(phase);
+		`uvm_info("COVERAGE", $sformatf("Functional coverage: %0.2f%%", ALU_cg.get_coverage()), UVM_LOW)
 	endfunction
 
 endclass

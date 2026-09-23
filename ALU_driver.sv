@@ -1,13 +1,11 @@
 import uvm_pkg::*;
 `include "uvm_macros.svh"
 
-`timescale 1ns/1ps
-
 class ALU_driver #(
 	parameter width = 8
-) extends uvm_subscriber #(ALU_transaction #(width));
+) extends uvm_driver #(ALU_transaction #(width));
 	// constructor + factory registration
-	`uvm_component_param_utils(ALU_driver #(width));
+	`uvm_component_param_utils(ALU_driver #(width))
 
 	function new(string name = "driver", uvm_component parent = null);
 		super.new(name, parent);
@@ -19,8 +17,8 @@ class ALU_driver #(
 
 	// function build phase
 	function void build_phase(uvm_phase phase);
-		uvm_config_db #(virtual ALU_interface #(width))::get(this, "", "aluif", aluif) // put interface from top level tb into local interface
 		super.build_phase(phase);
+		void'(uvm_config_db #(virtual ALU_interface #(width))::get(this, "", "aluif", aluif));// put interface from top level tb into local interface
 	endfunction
 
 	// task run phase

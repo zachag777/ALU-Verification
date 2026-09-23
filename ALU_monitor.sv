@@ -24,7 +24,7 @@ class ALU_monitor #(
 		super.build_phase(phase);
 		mon_analysis_port = new("mon_analysis_port", this);
 
-		uvm_config_db #(virtual ALU_interface #(width))::get(this, "", "aluif", aluif);
+		void'(uvm_config_db #(virtual ALU_interface #(width))::get(this, "", "aluif", aluif));
 
 	endfunction
 	
@@ -35,8 +35,9 @@ class ALU_monitor #(
 	// transaction handle
 		ALU_transaction #(width) trans;
 
-		forever begin
-			#1ns; // wait for dut to settle
+		forever begin 
+			@(aluif.alu_inp_a or aluif.alu_inp_b or aluif.alu_function_select)
+			#1; // wait for dut to settle
 	// create transaction
 			trans = ALU_transaction #(width)::type_id::create("trans");
 

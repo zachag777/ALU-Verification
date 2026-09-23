@@ -10,8 +10,8 @@ module mux #(
 
 		case(sel)
 	
-		1'b0 : out = b;
-		1'b1 : out = a;
+		1'b0 : out = a;
+		1'b1 : out = b;
 		default : out = '0;
 
 

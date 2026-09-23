@@ -13,7 +13,7 @@ class ALU_base_test #(
 	// create environment
 	ALU_env #(width) env;
 
-	function build_phase(uvm_phase phase);
+	function void build_phase(uvm_phase phase);
 		super.build_phase(phase);
 		env = ALU_env #(width)::type_id::create("env", this);
 	endfunction
