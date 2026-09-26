@@ -109,7 +109,12 @@ class ALU_coverage #(
 			bins rshift_no_carry =
 				binsof(operation_cp.right_shift) &&
 				binsof(carry_cp.no_carry);
-		};
+			ignore_bins logic_carry = (binsof(operation_cp.and_function) ||
+				binsof(operation_cp.or_function)  ||
+				binsof(operation_cp.not_function) ||
+				binsof(operation_cp.xor_function)) &&
+				binsof(carry_cp.carry);
+		}
 
 		cross operation_cp, overflow_cp {
 			bins add_overflow = 
@@ -125,9 +130,19 @@ class ALU_coverage #(
 			bins sub_no_overflow =
 				binsof(operation_cp.sub) &&
 				binsof(overflow_cp.no_overflow);
-		};
+			ignore_bins logic_overflow = (binsof(operation_cp.and_function) ||
+				binsof(operation_cp.or_function) ||
+				binsof(operation_cp.not_function) ||
+				binsof(operation_cp.xor_function) ||
+				binsof(operation_cp.left_shift) ||
+				binsof(operation_cp.right_shift)) &&
+				binsof(overflow_cp.overflow);
+		}
 		
-		cross operation_cp, negative_cp;
+		cross operation_cp, negative_cp {
+			ignore_bins rshift_negative = binsof(operation_cp.right_shift) && binsof(negative_cp.negative);
+		}
+
 		cross operation_cp, zero_cp;
 	
 	endgroup
