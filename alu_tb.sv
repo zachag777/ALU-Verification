@@ -37,7 +37,7 @@ initial begin
 		"aluif",
 		aluif
 	);
-	run_test("ALU_random_test_8");
+	run_test("ALU_directed_test_8");
 
 end
 

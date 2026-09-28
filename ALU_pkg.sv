@@ -16,9 +16,14 @@ package ALU_pkg;
 	`include "ALU_env.sv"
 
 	`include "ALU_random_sequence.sv"
+	`include "ALU_directed_logic_sequence.sv"
+	`include "ALU_directed_shift_sequence.sv"
+	`include "ALU_directed_add_sequence.sv"
+	`include "ALU_directed_sub_sequence.sv"
 
 	`include "ALU_base_test.sv"
 	`include "ALU_random_test.sv"
+	`include "ALU_directed_test.sv"
 	
 
 
