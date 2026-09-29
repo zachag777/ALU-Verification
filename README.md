@@ -24,4 +24,5 @@ The ALU has four status flags: negative (N), zero (Z), carry (C) and overflow (V
 | C | Carry-out of adder | Carry-out of subtracter | 0 | Bit shifted out | Bit shifted out |
 | V | A and B have the same sign and the result's sign differs | A and B have different signs and the result's sign differs from A | 0 | 0 | 0 |
 
+<img width="7289" height="2313" alt="Untitled diagram-2026-09-29-014609" src="https://github.com/user-attachments/assets/8bbef804-7440-4906-8e4a-a9705243e74b" />
 
