@@ -4,7 +4,7 @@
 
 SystemVerilog implementation of a parameterized ALU with a full UVM verification environment including functional coverage.
 The ALU has eight distinct operations and a three bit function select input:
-
+```
   3'b000: ADD
   3'b001: SUB
   3'b010: AND
@@ -13,7 +13,7 @@ The ALU has eight distinct operations and a three bit function select input:
   3'b101: XOR
   3'b110: SHIFT LEFT
   3'b111: SHIFT RIGHT
-
+```
 ## Implementation
 
 The ALU uses ripple adders to implement binary addition and subtraction, and treats operands as two's complement signed values when determining
@@ -85,7 +85,7 @@ The ALU and verification environment were tested in EDA Playground because my un
 5. Add all .sv files to the playground.
 6. Copy the top level test bench into the testbench.sv window in EDA Playground
 7. Copy the following into the design.sv window in EDA Playground:
-
+```
 `include "AND.sv"
 `include "OR.sv"
 `include "NOT.sv"
@@ -98,5 +98,5 @@ The ALU and verification environment were tested in EDA Playground because my un
 `include "ALU.sv"
 `include "ALU_interface.sv"
 `include "ALU_pkg.sv"
-
+```
 8. Save and run.
