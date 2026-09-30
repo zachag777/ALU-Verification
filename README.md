@@ -74,3 +74,29 @@ every flag value it can. Unreachable combinations are excluded with `ignore_bins
 ## Tests
 
 The verification environment implements two tests: a random test and a directed test. The random test sends 1000 fully randomized transactions. Every combination of inputs and operations is legal for the ALU. The directed test sends specific transactions for each operation exercising different combinations of boundary bit patterns.
+
+## Simulating
+
+The ALU and verification environment were tested in EDA Playground because my university does not provide access to a license that can use UVM and functional coverage. To test this project in EDA Playground:
+1. Set Testbench + Design to SystemVerilog.
+2. Set UVM / OVM to UVM 1.2.
+3. Set the simulator to Cadence Xcelium 25.03
+4. Add "-coverage functional" as an argument in the Compile Options.
+5. Add all .sv files to the playground.
+6. Copy the top level test bench into the testbench.sv window in EDA Playground
+7. Copy the following into the design.sv window in EDA Playground:
+
+`include "AND.sv"
+`include "OR.sv"
+`include "NOT.sv"
+`include "XOR.sv"
+`include "MUX2TO1.sv"
+`include "SHIFT.sv"
+`include "ADD.sv"
+`include "SUB.sv"
+`include "fulladder.sv"
+`include "ALU.sv"
+`include "ALU_interface.sv"
+`include "ALU_pkg.sv"
+
+8. Save and run.
