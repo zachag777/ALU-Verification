@@ -44,18 +44,16 @@ The agent creates the sequencer, driver, and monitor through the factory and con
 
 The scoreboard computes expected results with a case statement on alu_function_select, using behavioral SystemVerilog operators: + for ADD, - for SUB, bitwise operators for the logic operations, and << / >> for the shifts.
 
-Flags are derived independently of the DUT's implementation:
-
 Carry: for ADD, from the extra bit of a width+1-bit sum. For SUB, from the carry-out of A + ~B + 1, so C = 1 means no borrow. For shifts, the bit shifted out.
 Overflow: computed as the XOR of the carry into and out of the MSB. The DUT uses the sign-comparison rule, so the two methods cross-check each other.
 Negative: evaluated as $signed(expected_out) < 0.
 Zero: set when the expected output is 0.
 
-Each mismatch is reported with its own UVM error ID (OUT, NEGATIVE, ZERO, CARRY, OVERFLOW), so a failure identifies exactly which value was wrong.
+Each mismatch is reported with its own UVM error ID, so a failure identifies exactly which value was wrong.
 
 ## Coverage Model
 
-The coverage subscriber samples one covergroup per transaction.
+The coverage model has one overarching covergroup, which is sampled with each transaction.
 
 ### Coverpoints
 - `operation_cp`: one bin per operation (8 bins)
