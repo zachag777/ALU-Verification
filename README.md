@@ -14,8 +14,6 @@ The ALU uses separate modules for each operation, with a multiplexer selecting t
 The ALU supports addition and subtraction using full adders and a ripple-carry adder structure. The logical operations perform bitwise operations on the input operands, while the shift operations perform logical left and right shifts.
 The ALU has four status flags: negative, zero, carry, and overflow. The negative flag is set if the most significant bit of the result is logic high. The zero flag is set if the result is zero. The carry flag indicates a carry-out for addition and subtraction, or a bit shifted out during a shift operation. The overflow flag indicates whether a signed arithmetic operation produces a result outside the representable range.
 
-The ALU updates on the input changes.
-
 ## Operations and Status Flags
 
 The ALU supports eight operations selected using a 3-bit input.
