@@ -5,16 +5,16 @@
 +incdir+Verification/Tests
 
 // ---------- DUT ----------
-AND.sv
-OR.sv
-NOT.sv
-XOR.sv
-MUX2TO1.sv
-fulladder.sv
-ADD.sv
-SUB.sv
-SHIFT.sv
-ALU.sv
+RTL/AND.sv
+RTL/OR.sv
+RTL/NOT.sv
+RTL/XOR.sv
+RTL/MUX2TO1.sv
+RTL/fulladder.sv
+RTL/ADD.sv
+RTL/SUB.sv
+RTL/SHIFT.sv
+RTL/ALU.sv
 
 // ---------- Testbench ----------
 Verification/ALU_interface.sv
