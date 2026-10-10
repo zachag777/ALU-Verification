@@ -59,6 +59,13 @@ class ALU_directed_logic_sequence #(
 			trans.alu_inp_a = C;
 			trans.alu_inp_b = D;
 			finish_item(trans);
+
+			trans = ALU_transaction #(width)::type_id::create("trans");
+			start_item(trans);
+			trans.alu_function_select = i;
+			trans.alu_inp_a = B;
+			trans.alu_inp_b = B;
+			finish_item(trans);
 		end
 
 	endtask
